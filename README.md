@@ -1,5 +1,5 @@
 # fpga-cascade
-fpga-cascade concept
+## Concept
 
 This project proposal is based around the idea of streamed-blocking (time/space decomposition approach).
 Although this approach was not well suited to Software implementation, the fact it models the F.E.M as 
