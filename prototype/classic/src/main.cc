@@ -2,8 +2,7 @@
 
 #include "mesh.h"
 #include "boundary_policies.h"
-#include "slice_exchange_policy.h"
-
+#include "exchange_policies.h"
 
 int main(int argc, char *argv[]) {
   std::cout << "Hello, World!" << std::endl;
