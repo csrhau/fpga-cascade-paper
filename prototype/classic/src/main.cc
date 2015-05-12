@@ -16,6 +16,6 @@ int main(int argc, char *argv[]) {
   }
 
   Simulation<WindTunnelBoundaryPolicy, SliceExchangePolicy> simulation(config);
-  simulation.step();
+  simulation.start();
   return 0;
 }
