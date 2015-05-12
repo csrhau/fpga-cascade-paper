@@ -1,6 +1,8 @@
 #include <iostream>
 
-#include "mesh.H"
+#include "mesh.h"
+#include "boundary_policies.h"
+#include "slice_exchange_policy.h"
 
 
 int main(int argc, char *argv[]) {
