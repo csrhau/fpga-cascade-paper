@@ -1,13 +1,21 @@
 #include <iostream>
 
-#include "mesh.h"
+#include "config_file.h"
+#include "simulation.h"
 #include "boundary_policies.h"
 #include "exchange_policies.h"
 
 int main(int argc, char *argv[]) {
-  std::cout << "Hello, World!" << std::endl;
+  if (argc != 2) {
+    std::cerr << "Usage: " << argv[0] << " <filename>" << std::endl;
+    return 1;
+  }
+  ConfigFile config(argv[1]);
+  if (config.get_or_default("debug", false)) {
+    config.print_config();
+  }
 
-  Mesh<WindTunnelBoundaryPolicy, SliceExchangePolicy> mesh;
-  mesh.step();
+  Simulation<WindTunnelBoundaryPolicy, SliceExchangePolicy> simulation(config);
+  simulation.step();
   return 0;
 }
