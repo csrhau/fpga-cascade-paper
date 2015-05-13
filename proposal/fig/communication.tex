@@ -9,14 +9,9 @@
   \draw[darkgray, thick, pattern=north east lines, pattern color=gray](#1, #2) rectangle (#1+1, #2+1);
 }
 \begin{tikzpicture}[x=1.5em,y=1.5em]
-
-  \draw[step=1, gray, very thin] (0,0) grid (10, 5);
-
-  \drawstencil{3}{2}
-
-  \onslide<2> {
-    \draw[printred, densely dashed, very thick] (3,0) -- (3,5);
-    \draw[printred, densely dashed, very thick] (7,0) -- (7,5);
-  }
+  \draw[->, thick] (10,0) -- (10, -10) node (yaxis) [below] {Time};
+%      \draw [<->,thick] (0,-10) node (yaxis) [above] {$y$}
+%              |- (10,0) node (xaxis) [right] {$x$};
+%
 \end{tikzpicture}
 \end{document}

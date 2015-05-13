@@ -19,7 +19,7 @@
 \begin{document}
   \frame{\titlepage}
   \begin{frame}
-    \frametitle{Stencil Codes}
+    \frametitle{Stencil Codes\only<2>{ - Decomposition}}
     \begin{figure}
       \centering
       \input{fig/grid}
@@ -27,7 +27,7 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Stencil Codes - Decomposition}
+    \frametitle{Stencil Codes - \only<1>{Decomposition}\only<2->{Boundary Exchanges}}
     \begin{figure}
       \centering
       \input{fig/decomposition}
@@ -35,12 +35,30 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Stencil Codes - Boundary Exchanges}
+    \frametitle{Stencil Codes - Communication}
     \begin{figure}
       \centering
-      \input{fig/exchange}
+      \input{fig/communication}
     \end{figure}
   \end{frame}
+
+  \begin{frame}
+    \frametitle{Stencil Codes}
+    \begin{itemize}
+      \item<1->{Memory-Centric Model}
+        \begin{itemize}
+          \item{Load Neighbor Values from Memory}
+          \item{Perform Calculation}
+          \item{Store Result}
+        \end{itemize}
+      \item<2->{Von-Neumman Architecture Mindset}
+        \begin{itemize}
+          \item{Distinction between memory and computation}
+        \end{itemize}
+
+    \end{itemize}
+  \end{frame}
+
   \ifdraft{\def \stencilradius{1}}{\def \stencilradius{6}}
   \input{fig/propagation}
  
