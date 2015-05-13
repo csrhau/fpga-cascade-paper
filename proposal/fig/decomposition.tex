@@ -10,9 +10,17 @@
 }
 \begin{tikzpicture}[x=2em,y=2em]
 
-  \draw[step=1, gray, very thin] (0,0) grid (8, 5);
+  \fill[lightgray](-2,0) rectangle (-1, 5);
+  \fill[lightgray] (0,0) rectangle (1,5);
+  \fill[lightgray] (5,0) rectangle (6,5);
+  \fill[lightgray](7,0) rectangle (8, 5);
 
-  \drawstencil{2}{2}
+
+  \draw[step=1, gray, very thin] (-4,0) grid (-1, 5);
+  \draw[step=1, gray, very thin] (0,0) grid (6, 5);
+  \draw[step=1, gray, very thin] (7,0) grid (10, 5);
+
+  \drawstencil{1}{2} 
 
 \end{tikzpicture}
 \end{document}
