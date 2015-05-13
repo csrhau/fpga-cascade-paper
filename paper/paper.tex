@@ -1,4 +1,5 @@
-\documentclass[]{IEEEtran}
+\documentclass[draft]{IEEEtran}
+\usepackage{ifdraft} % TODO Remove before submission!
 
 \author{Stephen Roberts}
 \title{Cascade: A Design Methodology for Porting Stencil Codes to FPGA Hardware}
@@ -9,7 +10,8 @@
             Each wavefront propagates through the space advancing the simulation by one timestep.
             The key benefit of this techniqu is that the circuitry required for each wavefront processing unit is identical, and these units can be arranged in a pipeline.}
 
-
+  \ifdraft{\input{tex/notes}}
+  
 % Wavefront Processing Unit
 % Pipeline
             
