@@ -35,27 +35,40 @@
   \end{frame}
 
   \begin{frame}
-    \frametitle{Stencil Codes - Communication}
-    \begin{figure}
-      \centering
-      \input{fig/communication}
-    \end{figure}
-  \end{frame}
-
-  \begin{frame}
     \frametitle{Stencil Codes}
     \begin{itemize}
-      \item<1->{Memory-Centric Model}
+      \item<1->{Memory-Centric Approach}
         \begin{itemize}
           \item{Load Neighbor Values from Memory}
           \item{Perform Calculation}
           \item{Store Result}
         \end{itemize}
-      \item<2->{Von-Neumman Architecture Mindset}
+      \item<2->{Not FPGA Friendly}
         \begin{itemize}
-          \item{Distinction between memory and computation}
+          \item{Random Access Memory Requirements}
+          \item{Bi-directional data movement}
         \end{itemize}
     \end{itemize}
+  \end{frame}
+
+
+
+
+
+
+
+
+
+
+
+
+
+  \begin{frame}
+    \frametitle{Stencil Codes - Communication}
+    \begin{figure}
+      \centering
+      \input{fig/communication}
+    \end{figure}
   \end{frame}
 
   \ifdraft{\def \stencilradius{1}}{\def \stencilradius{6}}

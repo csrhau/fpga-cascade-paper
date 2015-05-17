@@ -1,17 +1,43 @@
 \documentclass[beamer]{standalone}
 \definecolor{printred}{RGB}{215,25,28}
 \usepackage{tikz}
-\usetikzlibrary{patterns}
+\usepackage{lmodern}
 \begin{document}
-\newcommand{\drawstencil}[2]{%
-  \draw[darkgray, thick, pattern=north west lines, pattern color=gray] (#1-1, #2) rectangle (#1+2, #2+1);
-  \draw[darkgray, thick, pattern=north west lines, pattern color=gray] (#1, #2-1) rectangle (#1+1, #2+2);
-  \draw[darkgray, thick, pattern=north east lines, pattern color=gray](#1, #2) rectangle (#1+1, #2+1);
-}
-\begin{tikzpicture}[x=1.5em,y=1.5em]
-  \draw[->, thick] (10,0) -- (10, -10) node (yaxis) [below] {Time};
-%      \draw [<->,thick] (0,-10) node (yaxis) [above] {$y$}
-%              |- (10,0) node (xaxis) [right] {$x$};
-%
+\tikzstyle{proc} = [circle, draw=black, fill=lightgray]
+\begin{tikzpicture}[]
+  \matrix[row sep=1cm, column sep=2cm] {
+    \node (A1) [proc] {}; &  \node (B1) [proc] {}; &  \node (C1) [proc] {}; \\
+    \node (A2) [proc] {}; &  \node (B2) [proc] {}; &  \node (C2) [proc] {}; \\
+    \node (A3) [proc] {}; &  \node (B3) [proc] {}; &  \node (C3) [proc] {}; \\
+  };
+  \path<1,2>[->]
+    % Timestep 1 to Timestep 2
+    (A1) edge[thick, dashed] (A2) 
+    (A1) edge[thick]  (B2)
+
+    (B1) edge[thick, dashed] (B2)
+    (B1) edge [thick] (C2)
+
+    (C1) edge [thick, dashed] (C2)
+
+    % Timestep 2 to Timestep 3
+    (A2) edge[thick, dashed] (A3) 
+    (A2) edge[thick]  (B3)
+
+    (B2) edge[thick, dashed] (B3)
+    (B2) edge [thick] (C3)
+
+    (C2) edge [thick, dashed] (C3)
+  ;
+  \onslide<1> {
+    \path[->]
+
+      (B1) edge [thick] (A2)
+      (C1) edge [thick] (B2)
+
+      (B2) edge [thick] (A3)
+      (C2) edge [thick] (B3)
+    ;
+  }
 \end{tikzpicture}
 \end{document}
