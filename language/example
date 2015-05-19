@@ -1,0 +1,12 @@
+Dimension x {
+  extent: 1000;
+}
+
+Dimension y {
+  extent: 1000;
+}
+
+Stencil heat {
+  dimensions: x, y;
+  expression: sqrt([-1, 0] + 4[0, 0] + [+1, 0])
+}
