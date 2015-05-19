@@ -16,5 +16,8 @@ FPGA Floating Point support and performance are known issues. The circuitry need
 ### Hardware
 From a chat with Pete: Nallatech 395 in 2 nodes
 
-# Existing work:
+# Existing work
 http://www.cs.ucla.edu/~pouchet/doc/ics-article.12.pdf Time blocking. N threads wavefront their way through the code.
+
+# Tools
+https://eclipse.org/Xtext/ For the DSL. (Also means a switch to java for interpreter.)
