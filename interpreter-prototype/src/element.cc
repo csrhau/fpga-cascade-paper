@@ -11,3 +11,7 @@ void Element::update() {
 void Element::commit() {
   std::swap(_curr, _next);
 }
+
+const State& Element::getState() const {
+  return _curr;
+}

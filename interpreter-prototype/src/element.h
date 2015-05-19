@@ -12,6 +12,7 @@ class Element {
     Element();
     void update();
     void commit();
+    const State& getState() const; 
   private:
     State _curr;
     State _next;

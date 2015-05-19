@@ -6,7 +6,7 @@
 
 class HeatElement : public Element {
  private:
-    virtual State compute(const State& curr_);
+    State compute(const State& curr_);
 };
 
 #endif
