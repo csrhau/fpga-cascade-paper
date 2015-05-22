@@ -18,6 +18,11 @@ From a chat with Pete: Nallatech 395 in 2 nodes
 
 # Existing work
 http://www.cs.ucla.edu/~pouchet/doc/ics-article.12.pdf Time blocking. N threads wavefront their way through the code.
+FPGA-Based Systolic Computational-Memory Array for Scalable Stencil Computations
+
+# Notes
+Systolic arrays are what we enable 
+
 
 # Tools
 https://eclipse.org/Xtext/ For the DSL. (Also means a switch to java for interpreter.)
