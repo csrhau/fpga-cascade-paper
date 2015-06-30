@@ -16,30 +16,29 @@
   \path<1,2>[->]
     % Timestep 1 to Timestep 2
     (A1) edge[thick, dashed] (A2) 
-    (A1) edge[thick]  (B2)
+    (B1) edge [thick] (A2)
 
     (B1) edge[thick, dashed] (B2)
-    (B1) edge [thick] (C2)
+    (C1) edge [thick] (B2)
 
     (C1) edge [thick, dashed] (C2)
 
     % Timestep 2 to Timestep 3
     (A2) edge[thick, dashed] (A3) 
-    (A2) edge[thick]  (B3)
+    (B2) edge [thick] (A3)
 
     (B2) edge[thick, dashed] (B3)
-    (B2) edge [thick] (C3)
+    (C2) edge [thick] (B3)
 
     (C2) edge [thick, dashed] (C3)
   ;
   \onslide<1> {
     \path[->]
 
-      (B1) edge [thick] (A2)
-      (C1) edge [thick] (B2)
-
-      (B2) edge [thick] (A3)
-      (C2) edge [thick] (B3)
+      (A1) edge[thick]  (B2) % zoot
+      (B1) edge [thick] (C2) % zoot
+      (A2) edge[thick]  (B3) % zoot
+      (B2) edge [thick] (C3) % zoot
     ;
   }
 \end{tikzpicture}
