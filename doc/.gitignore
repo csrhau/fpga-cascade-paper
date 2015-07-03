@@ -1,6 +1,5 @@
 ## build output
-paper.pdf
-presentation.pdf
+*.pdf
 
 ## Local crap directory
 
