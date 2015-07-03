@@ -1,0 +1,64 @@
+\documentclass[tikz]{standalone}
+\usepackage{tikz}
+\usepackage{etoolbox} % for toggles
+
+\newbool{commstr}
+\newbool{commstl}
+\newbool{commsbr}
+\newbool{commsbl}
+
+\booltrue{commstr}
+\booltrue{commstl}
+\booltrue{commsbr}
+\booltrue{commsbl}
+
+\begin{document}
+\tikzstyle{proc} = [circle, draw=black, fill=lightgray]
+
+\begin{tikzpicture}[]
+  \matrix[row sep=0.75cm, column sep=1.5cm] {
+    \node (A3) [proc] {}; &  \node (B3) [proc] {}; &  \node (C3) [proc] {}; \\
+    \node (A2) [proc] {}; &  \node (B2) [proc] {}; &  \node (C2) [proc] {}; \\
+    \node (A1) [proc] {}; &  \node (B1) [proc] {}; &  \node (C1) [proc] {}; \\
+  };
+ 
+  % Vertical dashed continuity lines
+  \path[->]
+    (A1) edge[thick, dashed] (A2) 
+    (B1) edge[thick, dashed] (B2)
+    (C1) edge[thick, dashed] (C2)
+    (A2) edge[thick, dashed] (A3) 
+    (B2) edge[thick, dashed] (B3)
+    (C2) edge[thick, dashed] (C3)
+  ;
+ 
+  % Bottom level --> arrows
+  \ifbool{commsbr}{
+    \path[->]
+      (A1) edge[thick] (B2)
+      (B1) edge[thick] (C2)
+    ;
+  }{}
+  % Bottom level <-- arrows
+  \ifbool{commsbl}{
+    \path[->]
+      (B1) edge[thick] (A2)
+      (C1) edge[thick] (B2)
+    ;
+  }{}
+  % Top level --> arrows
+  \ifbool{commstr}{
+    \path[->]
+      (A2) edge[thick] (B3)
+      (B2) edge[thick] (C3)
+    ;
+  }{}
+  % Top level <-- arrows
+  \ifbool{commstl}{
+    \path[->]
+      (B2) edge[thick] (A3)
+      (C2) edge[thick] (B3)
+    ;
+  }{}
+  \end{tikzpicture}
+\end{document}

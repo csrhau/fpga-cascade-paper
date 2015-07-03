@@ -1,0 +1,25 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+  \begin{tikzpicture}[scale=0.5]
+    \fill[lightgray] (0,5) rectangle (11, 6);
+    \fill[lightgray] (1,4) rectangle (10, 5);
+    \fill[lightgray] (2,3) rectangle (9, 4);
+    \fill[lightgray] (3,2) rectangle (8, 3);
+    \fill[lightgray] (4,1) rectangle (7, 2);
+    \fill[lightgray] (5,0) rectangle (6, 1);
+    \draw[thick,->] (5.5,0.5) -- (5.5, 6) node (yaxis) [above] {time}; 
+    \draw[thick, <->] (0,0.5) node [left] {space} -- (11,0.5) node (xaxis) [right] {space};
+    \draw[gray, step=1] (0,0) grid (11,6);
+    \foreach \ts in {0,...,5} {
+      \draw[very thick, dashed, red] (\ts+2,\ts) rectangle (\ts+6,\ts+1);
+    }
+
+    \node[draw=black,thick] at (5.5, -1.5) {%
+      \begin{tabular}{@{}c@{ }l@{}}
+        \raisebox{-1pt}{\tikz{\fill[lightgray] (0,0) rectangle (3mm,3mm);}} & Data Dependencies\\
+        \raisebox{-2pt}{\tikz{\draw[very thick, dashed, red] (0,0) rectangle (6mm,3mm);}} & Processor Domain\\
+      \end{tabular}
+    };
+  \end{tikzpicture}
+\end{document}

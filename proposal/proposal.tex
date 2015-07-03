@@ -1,6 +1,10 @@
 \documentclass[a4paper,conference]{IEEEtran}
+\usepackage{standalone} % For inclusion of standalone figures
+\usepackage{etoolbox} % For conditional toggles (used in figs)
+\usepackage{tikz} % For drawing figures
+\usetikzlibrary{fit} % for node bounding boxes
 
-\title{CASCADE: Research Proposal NoC Decomposition}
+\title{NoC Optimised Domain Decomposition \\ \textit{Research Proposal}}
 \author{
 \IEEEauthorblockN{Stephen Roberts}
   \IEEEauthorblockA{The University of Warwick
@@ -8,7 +12,16 @@
 }
 \date{}
 
+
+% Boolean flags for controlling communications diagrams
+\newbool{commstr}
+\newbool{commstl}
+\newbool{commsbr}
+\newbool{commsbl}
+
 \begin{document}  
   \maketitle
   \input{tex/abstract}
+  \input{tex/background}
+  \input{tex/technique}
 \end{document}
