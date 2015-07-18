@@ -6,7 +6,8 @@
 \begin{document}
   \tikzstyle{sq} = [minimum height=0.8cm, minimum width=0.8cm]
   \tikzstyle{pe} = [rectangle, sq, draw=black]
-
+  \tikzset{>=latex} % Change default arrowhead to filled triangle
+  
   % \pelem[label]
   \def\pelem[#1] {
     \node (#1) [pe] {PE}; 
@@ -19,19 +20,19 @@
 
   % \cgroup[from_node, to_node]
   \def\cgroup[#1, #2] {
-    \node(group-#1-#2)[fit=(#1)(#2),  thick, red, dashed, rounded corners, draw]{};
+    \node(group-#1-#2)[fit=(#1)(#2), thick, red, dashed, rounded corners, draw]{};
   }
 
   % \hlink[from_label, to_label]
   \def\hlink[#1, #2]{
-    \draw[thick, ->] (#1.345) -- (#2.195);
-    \draw[thick, <-] (#1.15) -- (#2.165);
+    \draw[thick, ->] (#1.15) -- (#2.165);
+    \draw[thick, <-] (#1.345) -- (#2.195);
   }
 
   % \vlink[from_label, to_label]
   \def\vlink[#1, #2]{
-    \draw[thick, transform canvas={xshift=0.1cm},->] (#1) -- (#2);
-    \draw[thick, transform canvas={xshift=-0.1cm},<-] (#1) -- (#2);
+    \draw[thick, <-] (#1.285) -- (#2.75);
+    \draw[thick, ->] (#1.255) -- (#2.105);
   }
 
   \begin{tikzpicture}[]
