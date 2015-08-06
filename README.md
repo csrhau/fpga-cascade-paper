@@ -26,6 +26,8 @@ FPGA-Based Systolic Computational-Memory Array for Scalable Stencil Computations
 
 # Notes
 Systolic arrays are what we enable 
+Read: A framework for FPGA acceleration of large graph problems: graphlet counting case study
+Read: GraphGen: An FPGA Framework for Vertex-Centric Graph Computation
 
 
 # Tools
