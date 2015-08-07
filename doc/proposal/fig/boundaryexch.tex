@@ -1,0 +1,22 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+  \tikzset{>=latex} % Change default arrowhead to filled triangle
+  \begin{tikzpicture}[scale=0.25]
+    \fill[lightgray] (0,0) rectangle (4,1);
+    \draw[gray, step=1] (0,0) grid (5,1);
+    
+    \draw[->] (3.5,1) to [bend left=40] (6.5,1);
+    \draw[->] (7.5,0) to [bend left=40] (4.5,0);
+
+    \fill[lightgray] (7,0) rectangle (11,1);
+    \draw[gray, step=1] (6,0) grid (12,1);
+    
+    \draw[->] (10.5,1) to [bend left=40] (13.5,1);
+    \draw[->] (14.5,0) to [bend left=40] (11.5,0);
+
+    \fill[lightgray] (14,0) rectangle (18,1);
+    \draw[gray, step=1] (13,0) grid (18,1);
+
+  \end{tikzpicture}
+\end{document}
