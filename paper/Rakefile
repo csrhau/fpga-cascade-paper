@@ -1,6 +1,6 @@
 require 'rake/clean'
 
-CLEAN.include %w[dvi aux log blg fls bbl fdb_latexmk out nav toc vrb snm synctex.gz].map { |f| "**/*.#{f}" }
+CLEAN.include %w[dvi aux log blg fls bbl fdb_latexmk out nav sta toc vrb snm synctex.gz].map { |f| "**/*.#{f}" }
 CLOBBER.include '**/*.pdf'
 
 desc 'Build Proposal Document'

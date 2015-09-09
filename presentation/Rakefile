@@ -1,22 +1,23 @@
 require 'rake/clean'
 
-CLEAN.include %w[aux log blg bbl out nav sta toc vrb snm synctex.gz].map { |f| "**/*.#{f}" }
-CLOBBER.include %w[./*.pdf ./fig/*.pdf]
+CLEAN.include %w[dvi aux log blg fls bbl fdb_latexmk out nav sta toc vrb snm synctex.gz].map { |f| "**/*.#{f}" }
+CLOBBER.include '**/*.pdf'
+
 TEX_FILES = Rake::FileList.new('**/*.tex')
 STANDALONE = Rake::FileList.new('fig/*.tex')
 
 
 desc 'Compile Presentation'
-file 'presentation.pdf' => TEX_FILES do |tex|
-  system('pdflatex presentation.tex')
-  system('pdflatex presentation.tex')
+task :build do
+  system('latexmk -pdf presentation.tex')
 end
 
 STANDALONE.each do |f|
   base = File.basename(f, '.tex')
   desc "Build standalone figure for #{base}"
   file "#{base}.pdf" => f do |t|
-    system("pdflatex #{t.prerequisites.first}")
+    system("latexmk -pdf #{t.prerequisites.first}")
   end
 end
-task :default => ['presentation.pdf']
+
+task :default => :build
