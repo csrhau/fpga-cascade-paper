@@ -1,0 +1,50 @@
+\documentclass[tikz]{standalone}
+
+% https://www.sharelatex.com/blog/2013/08/27/tikz-series-pt1.html
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\begin{document}
+\definecolor{printred}{RGB}{215,25,28}
+\definecolor{printblue}{RGB}{43,131,186}
+\begin{tikzpicture}[scale=0.35]
+
+
+  % Drawing parameters
+  \pgfmathsetmacro{\maxy}{5}%
+  \pgfmathsetmacro{\neighbourinnerwidth}{3}%
+  \pgfmathsetmacro{\centerinnerwidth}{5}%
+  \pgfmathsetmacro{\gapwidth}{1}%
+  \pgfmathsetmacro{\borderwidth}{1}%
+  \pgfmathsetmacro{\arrowdisplacement}{1.5}
+
+
+  % Intermezzo values
+  \pgfmathsetmacro{\centerxanchor}{\neighbourinnerwidth+\borderwidth+\gapwidth}
+  \pgfmathsetmacro{\rightxanchor}{\centerxanchor+\borderwidth*2+\centerinnerwidth+\gapwidth}
+
+  %% Here Be Dragons!
+  % Ghost Columns
+  \fill[lightgray](\neighbourinnerwidth,0) rectangle (\neighbourinnerwidth+\borderwidth,\maxy);
+  \fill[lightgray] (\centerxanchor,0) rectangle (\centerxanchor+\borderwidth,\maxy);
+  \fill[lightgray] (\centerxanchor+\borderwidth+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth*2+\centerinnerwidth,\maxy);
+  \fill[lightgray](\rightxanchor,0) rectangle (\rightxanchor+\borderwidth,\maxy);
+
+  % Grids
+  \draw[step=1, gray, very thin] (0,0) grid (\neighbourinnerwidth+\borderwidth,\maxy);
+  \draw[step=1, gray, very thin] (\centerxanchor,0) grid (\centerxanchor+\centerinnerwidth+2*\borderwidth,\maxy);
+  \draw[step=1, gray, very thin] (\rightxanchor,0) grid (\rightxanchor+\neighbourinnerwidth+\borderwidth,\maxy);
+
+  % Left-To-Right transmission (->)
+  \draw[printred, densely dashed, very thick](\neighbourinnerwidth-\borderwidth,0) rectangle (\neighbourinnerwidth,\maxy);
+  \draw[->] (\neighbourinnerwidth-\borderwidth/2,\maxy-\arrowdisplacement) -- (\centerxanchor+.5*\borderwidth,\maxy-\arrowdisplacement);
+  \draw[printred, densely dashed, very thick](\centerxanchor+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth+\centerinnerwidth,\maxy);
+  \draw[->] (\centerxanchor+\centerinnerwidth+.5*\borderwidth,\maxy-\arrowdisplacement) -- (\rightxanchor+.5*\borderwidth,\maxy-\arrowdisplacement);
+
+  % Right-To-Left transmission (<-)
+  \draw[printblue, densely dashed, very thick] (\centerxanchor+\borderwidth,0) rectangle (\centerxanchor+2*\borderwidth,\maxy);
+  \draw[->] (\centerxanchor+1.5*\borderwidth, \arrowdisplacement) -- (\neighbourinnerwidth+.5*\borderwidth, \arrowdisplacement);
+  \draw[printblue, densely dashed, very thick] (\rightxanchor+\borderwidth,0) rectangle (\rightxanchor+2*\borderwidth,\maxy);
+  \draw[->] (\rightxanchor+1.5*\borderwidth, \arrowdisplacement) -- (\centerxanchor+\centerinnerwidth+1.5*\borderwidth, \arrowdisplacement);
+
+\end{tikzpicture}
+\end{document}
