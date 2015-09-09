@@ -3,9 +3,9 @@ require 'rake/clean'
 CLEAN.include %w[dvi aux log blg fls bbl fdb_latexmk out nav sta toc vrb snm synctex.gz].map { |f| "**/*.#{f}" }
 CLOBBER.include '**/*.pdf'
 
-desc 'Build Proposal Document'
+desc 'Build Paper'
 task :build do
-  system("latexmk -pdf proposal.tex")
+  system("latexmk -pdf paper.tex")
 end
 
 task :default => :build
