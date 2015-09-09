@@ -4,32 +4,35 @@
   \tikzset{>=latex} % Change default arrowhead to filled triangle
   \begin{tikzpicture}[scale=0.25]
 
-    % Timestep 1
-    \fill[lightgray] (0,3) rectangle (4,4);
-    \draw[gray, step=1] (0,3) grid (5,4);
     
-    \fill[lightgray] (7,3) rectangle (11,4);
-    \draw[gray, step=1] (6,3) grid (12,4);
+    % transarray[vOffset, hShift]
+    \def\transarray[#1, #2]{
+    \fill[lightgray] (0,#1) rectangle (#2+4,#1+1);
+    \draw[gray, step=1] (0,#1) grid (#2+5,#1+1);
     
-    \fill[lightgray] (14,3) rectangle (18,4);
-    \draw[gray, step=1] (13,3) grid (18,4);
-   
-   \draw[->](3.5,3) to (6.5,1);
-   \draw[->](2.5,3) to (5.5,1);
+    \fill[lightgray] (#2+7,#1) rectangle (#2+11,#1+1);
+    \draw[gray, step=1] (#2+6,#1) grid (#2+12,#1+1);
+    
+    \fill[lightgray] (#2+14,#1) rectangle (18,#1+1);
+    \draw[gray, step=1] (#2+13,#1) grid (18,#1+1);
+    }
 
-   \draw[->](10.5,3) to (13.5,1);
-   \draw[->](9.5,3) to (12.5,1);
 
-    % Timestep 2
-    \fill[lightgray] (0,0) rectangle (3,1);
-    \draw[gray, step=1] (0,0) grid (4,1);
-    
-    \fill[lightgray] (6,0) rectangle (10,1);
-    \draw[gray, step=1] (5,0) grid (11,1);
-    
-    \fill[lightgray] (13,0) rectangle (18,1);
-    \draw[gray, step=1] (12,0) grid (18,1);
+    % transarrows[vOffset, hShift]
+    \def\transarrows[#1, #2]{
+      % Arrows
+      \draw[->](#2+4.5,#1+2) to (#2+1.5,#1);
+      \draw[->](#2+3.5,#1+2) to (#2+0.5,#1);
 
+      \draw[->](#2+11.5,#1+2) to (#2+8.5,#1);
+      \draw[->](#2+10.5,#1+2) to (#2+7.5,#1);
+    }
+    
+    \transarray[6, 0]
+    \transarrows[4, 4]
+    \transarray[3, 1]
+    \transarrows[1, 5]
+    \transarray[0, 2]
 
   \end{tikzpicture}
 \end{document}
