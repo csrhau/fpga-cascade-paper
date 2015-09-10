@@ -1,0 +1,48 @@
+\documentclass[tikz]{standalone}
+
+% https://www.sharelatex.com/blog/2013/08/27/tikz-series-pt1.html
+\usepackage{tikz}
+\usetikzlibrary{patterns}
+\begin{document}
+\definecolor{printred}{RGB}{215,25,28}
+\begin{tikzpicture}[scale=0.35]
+
+  % Drawing parameters
+  \pgfmathsetmacro{\maxy}{5}%
+  \pgfmathsetmacro{\neighbourinnerwidth}{3}%
+  \pgfmathsetmacro{\centerinnerwidth}{5}%
+  \pgfmathsetmacro{\gapwidth}{2}%
+  \pgfmathsetmacro{\borderwidth}{1}%
+  
+  % Intermezzo values
+  \pgfmathsetmacro{\centerxanchor}{\neighbourinnerwidth+\borderwidth+\gapwidth}
+  \pgfmathsetmacro{\rightxanchor}{\centerxanchor+\borderwidth*2+\centerinnerwidth+\gapwidth}
+
+
+  %% Here Be Dragons!
+
+  % Discarded Columns
+  \draw[pattern color=lightgray, pattern=north west lines, very thin](\neighbourinnerwidth,0) rectangle (\neighbourinnerwidth+\borderwidth,\maxy);
+  \draw[pattern color=lightgray, pattern=north west lines, very thin](\centerxanchor+\borderwidth+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth*2+\centerinnerwidth,\maxy);
+ 
+  % Ghost Columns
+  \fill[lightgray](\neighbourinnerwidth-\borderwidth,0) rectangle (\neighbourinnerwidth,\maxy);
+  \fill[lightgray] (\centerxanchor-\borderwidth,0) rectangle (\centerxanchor,\maxy);
+  \fill[lightgray] (\centerxanchor+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth+\centerinnerwidth,\maxy);
+  \fill[lightgray](\rightxanchor-\borderwidth,0) rectangle (\rightxanchor,\maxy);
+
+  % Grids
+  \draw[step=1, gray, very thin] (0,0) grid (\neighbourinnerwidth,\maxy);
+  \draw[step=1, gray, very thin] (\centerxanchor-\borderwidth,0) grid (\centerxanchor+\centerinnerwidth+\borderwidth,\maxy);
+  \draw[step=1, gray, very thin] (\rightxanchor-\borderwidth,0) grid (\rightxanchor+\neighbourinnerwidth+\borderwidth,\maxy);
+
+  % Left-To-Right transmission (->)
+  \draw[printred, densely dashed, thick](\neighbourinnerwidth-2*\borderwidth,0) rectangle (\neighbourinnerwidth,\maxy);
+  \draw[->] (\neighbourinnerwidth-\borderwidth,.5*\maxy) -- (\centerxanchor,.5*\maxy);
+  \draw[printred, densely dotted, thick] (\centerxanchor-\borderwidth,0) rectangle (\centerxanchor+\borderwidth,\maxy);
+  \draw[printred, densely dashed, thick](\centerxanchor+\centerinnerwidth-\borderwidth,0) rectangle (\centerxanchor+\borderwidth+\centerinnerwidth,\maxy);
+  \draw[->] (\centerxanchor+\centerinnerwidth,.5*\maxy) -- (\rightxanchor,.5*\maxy);
+  \draw[printred, densely dotted, thick] (\rightxanchor-\borderwidth,0) rectangle (\rightxanchor+\borderwidth,\maxy);
+
+\end{tikzpicture}
+\end{document}

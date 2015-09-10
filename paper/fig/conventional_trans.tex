@@ -2,7 +2,6 @@
 
 % https://www.sharelatex.com/blog/2013/08/27/tikz-series-pt1.html
 \usepackage{tikz}
-\usetikzlibrary{patterns}
 \begin{document}
 \definecolor{printred}{RGB}{215,25,28}
 \definecolor{printblue}{RGB}{43,131,186}
@@ -12,10 +11,9 @@
   \pgfmathsetmacro{\maxy}{5}%
   \pgfmathsetmacro{\neighbourinnerwidth}{3}%
   \pgfmathsetmacro{\centerinnerwidth}{5}%
-  \pgfmathsetmacro{\gapwidth}{1}%
+  \pgfmathsetmacro{\gapwidth}{2}%
   \pgfmathsetmacro{\borderwidth}{1}%
   \pgfmathsetmacro{\arrowdisplacement}{1.5}
-
 
   % Intermezzo values
   \pgfmathsetmacro{\centerxanchor}{\neighbourinnerwidth+\borderwidth+\gapwidth}
@@ -34,15 +32,15 @@
   \draw[step=1, gray, very thin] (\rightxanchor,0) grid (\rightxanchor+\neighbourinnerwidth+\borderwidth,\maxy);
 
   % Left-To-Right transmission (->)
-  \draw[printred, densely dashed, very thick](\neighbourinnerwidth-\borderwidth,0) rectangle (\neighbourinnerwidth,\maxy);
+  \draw[printred, densely dashed, thick](\neighbourinnerwidth-\borderwidth,0) rectangle (\neighbourinnerwidth,\maxy);
   \draw[->] (\neighbourinnerwidth-\borderwidth/2,\maxy-\arrowdisplacement) -- (\centerxanchor+.5*\borderwidth,\maxy-\arrowdisplacement);
-  \draw[printred, densely dashed, very thick](\centerxanchor+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth+\centerinnerwidth,\maxy);
+  \draw[printred, densely dashed, thick](\centerxanchor+\centerinnerwidth,0) rectangle (\centerxanchor+\borderwidth+\centerinnerwidth,\maxy);
   \draw[->] (\centerxanchor+\centerinnerwidth+.5*\borderwidth,\maxy-\arrowdisplacement) -- (\rightxanchor+.5*\borderwidth,\maxy-\arrowdisplacement);
 
   % Right-To-Left transmission (<-)
-  \draw[printblue, densely dashed, very thick] (\centerxanchor+\borderwidth,0) rectangle (\centerxanchor+2*\borderwidth,\maxy);
+  \draw[printblue, densely dashed, thick] (\centerxanchor+\borderwidth,0) rectangle (\centerxanchor+2*\borderwidth,\maxy);
   \draw[->] (\centerxanchor+1.5*\borderwidth, \arrowdisplacement) -- (\neighbourinnerwidth+.5*\borderwidth, \arrowdisplacement);
-  \draw[printblue, densely dashed, very thick] (\rightxanchor+\borderwidth,0) rectangle (\rightxanchor+2*\borderwidth,\maxy);
+  \draw[printblue, densely dashed, thick] (\rightxanchor+\borderwidth,0) rectangle (\rightxanchor+2*\borderwidth,\maxy);
   \draw[->] (\rightxanchor+1.5*\borderwidth, \arrowdisplacement) -- (\centerxanchor+\centerinnerwidth+1.5*\borderwidth, \arrowdisplacement);
 
 \end{tikzpicture}
