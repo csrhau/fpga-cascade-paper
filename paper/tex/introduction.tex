@@ -2,6 +2,9 @@
 Stencil codes are a class of algorithm in which array elements are updated based on the values in a fixed neighbourhood.
 This pattern of computation occurs in a number of domains, including Computational Fluid Dynamics, Image processing and iterative linear solvers.
 
+This paper presents the architectural pattern we refer to as Compute Array Streaming via Translation of Logical Elements (CASTLE).
+o
+
 \begin{figure}
   \booltrue{commstr}
   \booltrue{commstl}
@@ -34,3 +37,11 @@ This pattern of computation occurs in a number of domains, including Computation
   \caption{Systolic Computational-Memory Array (SCMA)}
   \label{fig:scma}
 \end{figure}
+
+The contributions made in this research are:
+\begin{itemize}
+  \item{We introduce CASTLE and show how it can be applied to stencil codes;}
+  \item{We show how CASTLE can be optimised for specific stencil codes and FPGA platforms.
+        Specifically, we describe the various parameters which can be tuned to improve the performance of CASTLE.;}
+  \item{We validate CASTLE by applying it to CODE-NAME-HERE, yielding a BIG-NUMERIC-IMPROVEMENT;}
+\end{itemize}
