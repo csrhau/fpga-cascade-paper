@@ -1,0 +1,41 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+  \tikzstyle{sq} = [minimum height=0.8cm, minimum width=0.8cm]
+  \tikzstyle{pe} = [rectangle, sq, draw=black]
+  \tikzset{>=latex} % Change default arrowhead to filled triangle
+  
+  % \pelem[label, j]
+  \def\pelem[#1, #2] {
+    \node (#1-#2) [pe] {$P_{#1,#2}$}; 
+  }
+
+  % \hlink[from_label, to_label]
+  \def\hlink[#1, #2]{
+    \draw[thick, ->] (#1.15) -- (#2.165);
+    \draw[thick, <-] (#1.345) -- (#2.195);
+  }
+
+  % \vlink[from_label, to_label]
+  \def\vlink[#1, #2]{
+    \draw[thick, <-] (#1.285) -- (#2.75);
+    \draw[thick, ->] (#1.255) -- (#2.105);
+  }
+
+  \begin{tikzpicture}[]
+    \matrix[row sep=.5cm, column sep=.5cm] {
+      \pelem[0, 0] & \pelem[0, 1] & \pelem[0, 2] \\
+      \pelem[1, 0] & \pelem[1, 1] & \pelem[1, 2] \\
+      \pelem[2, 0] & \pelem[2, 1] & \pelem[2, 2] \\
+    };
+
+    % Horizontal Linkage
+    \hlink[0-0, 0-1] \hlink[0-1, 0-2] 
+    \hlink[1-0, 1-1] \hlink[1-1, 1-2]
+    \hlink[2-0, 2-1] \hlink[2-1, 2-2]
+
+    % Vertical Linkage
+    \vlink[0-0, 1-0] \vlink[0-1, 1-1] \vlink[0-2, 1-2]
+    \vlink[1-0, 2-0] \vlink[1-1, 2-1] \vlink[1-2, 2-2]
+  \end{tikzpicture}
+\end{document}

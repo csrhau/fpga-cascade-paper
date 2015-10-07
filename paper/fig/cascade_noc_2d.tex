@@ -1,0 +1,55 @@
+\documentclass[tikz]{standalone}
+
+\begin{document}
+  \tikzstyle{sq} = [minimum height=0.8cm, minimum width=0.8cm]
+  \tikzstyle{pe} = [rectangle, sq, draw=black]
+  \tikzset{>=latex} % Change default arrowhead to filled triangle
+  
+  % \pelem[label, j]
+  \def\pelem[#1, #2] {
+    \node (#1-#2) [pe] {$P_{#1,#2}$}; 
+  }
+
+  % \hlink[from_label, to_label]
+  \def\hlink[#1, #2]{
+    \draw[thick, ->] (#1.15) -- (#2.165);
+    \draw[thick, <-] (#1.345) -- (#2.195);
+  }
+
+  % \vlink[from_label, to_label]
+  \def\vlink[#1, #2]{
+    \draw[thick, ->] (#1.255) -- (#2.105);
+  }
+
+  % \vlink[from_label, to_label]
+  \def\vlink[#1, #2]{
+    \draw[thick, ->] (#1.255) -- (#2.105);
+  }
+
+  % \dlink[from_label, to_label]
+  \def\dlink[#1, #2]{
+    \draw[thick, ->] (#1.210) -- (#2.55);
+  }
+
+  \begin{tikzpicture}[]
+    \matrix[row sep=.5cm, column sep=.5cm] {
+      \pelem[0, 0] & \pelem[0, 1] & \pelem[0, 2] \\
+      \pelem[1, 0] & \pelem[1, 1] & \pelem[1, 2] \\
+      \pelem[2, 0] & \pelem[2, 1] & \pelem[2, 2] \\
+    };
+
+    % Horizontal Linkage
+    \draw[thick, ->] (0-0) -- (0-1); \draw[thick, ->] (0-1) -- (0-2);
+    \draw[thick, ->] (1-0) -- (1-1); \draw[thick, ->] (1-1) -- (1-2);
+    \draw[thick, ->] (2-0) -- (2-1); \draw[thick, ->] (2-1) -- (2-2);
+
+    % Vertical Linkage
+    \draw[thick, ->] (0-0) -- (1-0); \draw[thick, ->] (0-1) -- (1-1); \draw[thick, ->] (0-2) -- (1-2); 
+    \draw[thick, ->] (1-0) -- (2-0); \draw[thick, ->] (1-1) -- (2-1); \draw[thick, ->] (1-2) -- (2-2); 
+
+    % Diagonal Linkage
+    \draw[thick, ->] (0-0) -- (1-1); \draw[thick, ->] (0-1) -- (1-2); 
+    \draw[thick, ->] (1-0) -- (2-1); \draw[thick, ->] (1-1) -- (2-2);
+
+  \end{tikzpicture}
+\end{document}
