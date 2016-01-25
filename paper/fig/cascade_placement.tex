@@ -1,0 +1,49 @@
+\documentclass[tikz]{standalone}
+\usetikzlibrary{patterns}
+
+\definecolor{printred}{RGB}{215,25,28}
+\definecolor{printblue}{RGB}{43,131,186}
+\definecolor{printgreen}{RGB}{145,180,130}
+\begin{document}
+
+  \def\trblock {
+    \draw[gray, step=1] (0,0) grid (6,5);
+    \draw[thick, gray] (2,2) rectangle (6, 5);
+    \path[pattern color=lightgray, pattern=north west lines] (2, 5) -- (5, 5) -- (5, 4) -- (6, 4) -- (6, 2) -- (2, 2) -- cycle;
+    \path[pattern color=printred, pattern=north west lines] (0, 4) -- (1, 4) -- (1, 5) -- (2, 5) -- (2, 2) -- (0, 2) -- cycle;
+    \path[pattern color=printblue, pattern=north west lines] (0, 2) -- (2, 2) -- (2, 0) -- (1, 0) -- (1, 1) -- (0, 1) -- cycle;
+    \path[pattern color=printgreen, pattern=north west lines] (2, 0) -- (2, 2) -- (6, 2) -- (6, 1) -- (5, 1) -- (5, 0) -- cycle;
+  }
+
+  \def\brblock {
+    \draw[gray, step=1] (0,0) grid (6,5);
+    \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    \path[pattern color=printgreen, pattern=north west lines] (2, 3) -- (2, 5) -- (6, 5) -- (6, 4) -- (5, 4) -- (5, 3) -- cycle;
+  }
+
+  \def\blblock {
+    \draw[gray, step=1] (0,0) grid (6,5);
+    \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    \path[pattern color=printblue, pattern=north west lines] (4, 5) -- (4, 4) -- (5, 4) -- (5, 3) -- (6, 3) -- (6, 5) -- cycle;
+
+  }
+
+
+  \def\tlblock {
+    \draw[gray, step=1] (0,0) grid (6,5);
+    \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    \path[pattern color=printred, pattern=north west lines] (4, 4) -- (5, 4) -- (5, 5) -- (6, 5) -- (6, 2) -- (4, 2) -- cycle;
+
+
+    \path[pattern color=printblue, pattern=dots] (4, 2) -- (6, 2) -- (6, 0) -- (5, 0) -- (5, 1) -- (4, 1) -- cycle;
+
+  }
+
+  \begin{tikzpicture}[]
+    \matrix[row sep=2cm, column sep=2cm] {
+      \tlblock & \trblock & \\
+      \blblock & \brblock & \\
+    };
+
+     \end{tikzpicture}
+\end{document}
