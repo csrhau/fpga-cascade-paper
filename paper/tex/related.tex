@@ -2,3 +2,17 @@
 
 Other approaches have been propsed to streaming sencil codes for FPGAs.
 Kano et al~\cite{sano:2014aa} propose the SCC array, a custom computational machine (CCM) which is worryingly similar to cascade.
+
+
+
+Implementing the SSA is conceptually very simple.
+Each processing element contains a shift-buffer $B$ of width $2r$, and the stencil computation is reformulated as $f(B_0, B_{r-1}, B_{r}, B_{r+1}, B{2r})$
+
+
+
+\begin{figure}
+  \centering
+  \input{fig/scma}
+  \caption{Systolic Computational-Memory Array (SCMA)}
+  \label{fig:scma}
+\end{figure}

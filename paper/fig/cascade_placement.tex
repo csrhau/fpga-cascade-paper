@@ -1,49 +1,90 @@
 \documentclass[tikz]{standalone}
+\usepackage{etoolbox}
 \usetikzlibrary{patterns}
-
+\usetikzlibrary{matrix}
+\usetikzlibrary{chains}
 \definecolor{printred}{RGB}{215,25,28}
 \definecolor{printblue}{RGB}{43,131,186}
 \definecolor{printgreen}{RGB}{145,180,130}
 \begin{document}
-
+  \newtoggle{dasheddomains}
+  \toggletrue{dasheddomains}
   \def\trblock {
     \draw[gray, step=1] (0,0) grid (6,5);
-    \draw[thick, gray] (2,2) rectangle (6, 5);
     \path[pattern color=lightgray, pattern=north west lines] (2, 5) -- (5, 5) -- (5, 4) -- (6, 4) -- (6, 2) -- (2, 2) -- cycle;
     \path[pattern color=printred, pattern=north west lines] (0, 4) -- (1, 4) -- (1, 5) -- (2, 5) -- (2, 2) -- (0, 2) -- cycle;
     \path[pattern color=printblue, pattern=north west lines] (0, 2) -- (2, 2) -- (2, 0) -- (1, 0) -- (1, 1) -- (0, 1) -- cycle;
     \path[pattern color=printgreen, pattern=north west lines] (2, 0) -- (2, 2) -- (6, 2) -- (6, 1) -- (5, 1) -- (5, 0) -- cycle;
+    \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    \coordinate (trtopleft) at (0, 5);
+    \coordinate (trbottomleft) at (0, 0);
+    \coordinate (trbottommiddle) at (2, 0);
+    \coordinate (trbottomright) at (6, 0);
   }
 
   \def\brblock {
     \draw[gray, step=1] (0,0) grid (6,5);
-    \draw[thick, darkgray] (2,2) rectangle (6, 5);
     \path[pattern color=printgreen, pattern=north west lines] (2, 3) -- (2, 5) -- (6, 5) -- (6, 4) -- (5, 4) -- (5, 3) -- cycle;
+    \coordinate (brtopleft) at (0, 5);
+    \coordinate (brtopmiddle) at (2, 5);
+    \coordinate (brtopright) at (6, 5);
+    \coordinate (brbottomleft) at (0, 0);
+    \iftoggle{dasheddomains}{
+      \draw[thick, darkgray, dashed] (2,3) rectangle (6, 5);
+    }{
+      \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    }
   }
 
   \def\blblock {
     \draw[gray, step=1] (0,0) grid (6,5);
-    \draw[thick, darkgray] (2,2) rectangle (6, 5);
     \path[pattern color=printblue, pattern=north west lines] (4, 5) -- (4, 4) -- (5, 4) -- (5, 3) -- (6, 3) -- (6, 5) -- cycle;
-
+    \coordinate (bltopmiddle) at (2, 5);
+    \coordinate (bltopright) at (6, 5);
+    \coordinate (blbottomright) at (6, 0);
+    \iftoggle{dasheddomains}{
+      \draw[thick, darkgray, dashed] (2,3) rectangle (6, 5);
+      \draw[thick, darkgray, dashed] (4,0) rectangle (6, 5);
+    }{
+      \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    }
   }
-
 
   \def\tlblock {
     \draw[gray, step=1] (0,0) grid (6,5);
-    \draw[thick, darkgray] (2,2) rectangle (6, 5);
     \path[pattern color=printred, pattern=north west lines] (4, 4) -- (5, 4) -- (5, 5) -- (6, 5) -- (6, 2) -- (4, 2) -- cycle;
-
-
     \path[pattern color=printblue, pattern=dots] (4, 2) -- (6, 2) -- (6, 0) -- (5, 0) -- (5, 1) -- (4, 1) -- cycle;
-
+    \coordinate (tltopright) at (6, 5);
+    \coordinate (tlbottommiddle) at (2, 0);
+    \coordinate (tlbottomright) at (6, 0);
+    \iftoggle{dasheddomains}{
+      \draw[thick, darkgray, dashed] (4,0) rectangle (6, 5);
+      \draw[thick, darkgray, dashed] (2,0) rectangle (6, 2);
+    }{
+      \draw[thick, darkgray] (2,2) rectangle (6, 5);
+    }
   }
-
-  \begin{tikzpicture}[]
-    \matrix[row sep=2cm, column sep=2cm] {
-      \tlblock & \trblock & \\
-      \blblock & \brblock & \\
+  \begin{tikzpicture}[x=0.5cm, y=0.5cm]
+    \matrix [row sep=1cm, column sep=1cm] {
+      \tlblock & \trblock \\
+      \blblock & \brblock \\
     };
+    % horizontal arrows
+    \draw[->, very thick, dashed] (tltopright) -- (trtopleft);
+    \draw[->, very thick, dashed] (tlbottomright) -- (trbottomleft);
+    \draw[->, very thick, dashed] (bltopright) -- (brtopleft);
+    \draw[->, very thick, dashed] (blbottomright) -- (brbottomleft);
+    % vertical arrows
+    \draw[->, very thick, dashed] (brtopmiddle) -- (trbottommiddle);
+    \draw[->, very thick, dashed] (brtopright) -- (trbottomright);
+    \draw[->, very thick, dashed] (bltopmiddle) -- (tlbottommiddle);
+    \draw[->, very thick, dashed] (bltopright) -- (tlbottomright);
 
-     \end{tikzpicture}
+    % Timestep labels
+    \path (bltopmiddle) -- (tlbottomright) node[midway] {\footnotesize 1};
+    \path (brtopmiddle) -- (trbottomright) node[midway] {\footnotesize 1};
+
+    \path (tltopright) -- (trbottomleft) node[midway] {\footnotesize 2};
+    \path (bltopright) -- (brbottomleft) node[midway] {\footnotesize 2};
+  \end{tikzpicture}
 \end{document}
