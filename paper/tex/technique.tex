@@ -71,6 +71,15 @@ Requires half-duplex communications links between processing elements.
   \label{fig:alternatingcomms}
 \end{figure}
 
+
+\subsection{Communication Overheads}
+The cascade communication scheme introduces additional overheads relative to a conventional system. $2wrh$.
+Firstly, the imposition of a staged pattern of communication (North then East in reference that figure) 
+That said, this pattern is common in conventional decompositions with $r>1$.
+
+
+
+
 \subsection{Instruction Pipelining}
 
 In the 
@@ -86,11 +95,6 @@ To hide this latency, floating point hardware has been designed in a pipelined f
   \caption{Data Movement in the Cascade architecture}
   \label{fig:cascade_placement}
 \end{figure}
-
-
-
-
-
 
 
 

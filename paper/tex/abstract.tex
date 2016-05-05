@@ -1,9 +1,7 @@
 \begin{abstract}
-This paper introduces CASTLE, an architectural design pattern for hardware implementations of stencil codes.
-CASTLE allows developers to take advantage of the massive parallelism offered by FPGAs.
+Stencil codes are a common class of parallel application which occur across many diciplines of simulation and modelling.
+This pattern of computation is ineherently parallelizable, yet its low arithmetic intensity hampers performance on conventional hardware.
+This paper introduces CASTLE, an architectural pattern for implementing stencil codes in hardware.
+CASTLE allows developers to take advantage of the massive parallelism and memory bandwiths offered by FPGAs.
 
-with bidirectional communication between neighbors.
-We propose a sliding window decomposition scheme which reduces the number of discrete communication events.
-
-Domain decomposition system architecture co-design.
 \end{abstract}
